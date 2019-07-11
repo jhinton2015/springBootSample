@@ -11,27 +11,27 @@ import java.util.Collection;
 public class StudentService {
 
     @Autowired
-    private StudentDao fakeStudentDaoImpl;
+    private StudentDao StudentDao;
 
     public Collection<Student> getAllStudents(){
-        return fakeStudentDaoImpl.getAllStudents();
+        return StudentDao.getAllStudents();
     }
 
     public Student getStudentById(int id){
-        return this.fakeStudentDaoImpl.getStudentById(id);
+        return this.StudentDao.getStudentById(id);
     }
 
     public void removeStudentById(int id) {
-        this.fakeStudentDaoImpl.removeStudentById(id);
+        this.StudentDao.removeStudentById(id);
     }
 
     public void updateStudent(Student student){
-        this.fakeStudentDaoImpl.updateStudent(student);
+        this.StudentDao.updateStudent(student);
 
     }
 
     public void insertStudent(Student student) {
-        this.fakeStudentDaoImpl.insertStudentToDb(student);
+        this.StudentDao.insertStudentToDb(student);
 
     }
 }
