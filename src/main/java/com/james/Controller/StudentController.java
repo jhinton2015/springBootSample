@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Collection;
 
 @RestController
@@ -14,7 +15,7 @@ import java.util.Collection;
 public class StudentController {
 
     @Autowired
-    public StudentService studentService;
+    private StudentService studentService;
 
     @RequestMapping(method = RequestMethod.GET)
     public Collection<Student> getAllStudents(HttpServletResponse response){
@@ -23,15 +24,25 @@ public class StudentController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Student getStudentById(@PathVariable("id") int id, HttpServletResponse response){
-        response.setStatus(200);
+    public Student getStudentById(@PathVariable("id") int id, HttpServletResponse response) throws IOException {
+
+        if(studentService.getStudentById(id) == null ){
+            response.sendError(404, "Student with this ID does not exist!");
+        }
+        else
+            response.setStatus(200);
         return studentService.getStudentById(id);
 
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void deleteStudentById(@PathVariable("id") int id, HttpServletResponse response){
-        studentService.removeStudentById(id);
+    public void deleteStudentById(@PathVariable("id") int id, HttpServletResponse response) throws IOException {
+
+        if(studentService.getStudentById(id) == null ){
+            response.sendError(404, "Student with this ID does not exist");
+        }
+        else
+            studentService.removeStudentById(id);
         response.setStatus(200);
     }
 
