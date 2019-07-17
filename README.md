@@ -19,7 +19,9 @@ This project is an intro to Spring Boot and REST
 
 ## Non-Goals
 
-Authorization, Authentication, Database usage
+- Authorization
+- Authentication
+- Database usage
 
 ## Design
 
@@ -46,3 +48,11 @@ Plan for performance testing (automated, non-automated, etc) if needed.
 ### Scale Testing
 
 Plan for scale testing (automated, non-automated, etc) if needed
+
+## References
+
+- in28minutes
+  - https://github.com/in28minutes/SpringBootForBeginners
+  
+- amigoscode
+  - https://youtu.be/Ke7Tr4RgRTs
