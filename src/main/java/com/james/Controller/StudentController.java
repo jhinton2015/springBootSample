@@ -39,7 +39,7 @@ public class StudentController {
     public void deleteStudentById(@PathVariable("id") int id, HttpServletResponse response) throws IOException {
 
         if(studentService.getStudentById(id) == null ){
-            response.sendError(404, "Student with this ID does not exist");
+            response.sendError(404, "Student with this ID does not exist!");
         }
         else
             studentService.removeStudentById(id);
