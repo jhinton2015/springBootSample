@@ -15,6 +15,7 @@ public class StudentService {
 
     public Collection<Student> getAllStudents(){
         return StudentDao.getAllStudents();
+        //gets all of the students
     }
 
     public Student getStudentById(int id){
